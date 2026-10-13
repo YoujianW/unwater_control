@@ -2,7 +2,7 @@
 #include "app_config.h"
 
 // TaskHandle_t LED_Task_handle;
-// TaskHandle_t vofa_Task_handle;
+TaskHandle_t vofa_Task_handle;
 TaskHandle_t adc_Task_handle;
 TaskHandle_t button_Task_handle;
 // TaskHandle_t Sonar_Task_handle;
@@ -13,7 +13,7 @@ TaskHandle_t Debug_Task_handle;
 void app_task_create(void)
 {
     // xTaskCreate(LED_Task_func,"LED_Task",128,NULL,0,&LED_Task_handle);
-    // xTaskCreate(vofa_Task_func,"vofa_Task",256,NULL,0,&vofa_Task_handle);
+    xTaskCreate(vofa_Task_func,"vofa_Task",256,NULL,0,&vofa_Task_handle);
     xTaskCreate(adc_Task_func,"adc_Task",128,NULL,0,&adc_Task_handle);
     xTaskCreate(button_Task_func,"button_Task",128,NULL,0,&button_Task_handle);
     // xTaskCreate(Sonar_Task_func,"Sonar_Task",128,NULL,0,&Sonar_Task_handle);

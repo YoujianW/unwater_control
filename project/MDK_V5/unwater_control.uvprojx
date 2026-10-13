@@ -598,6 +598,11 @@
           <GroupName>ace_robot_kit/APP</GroupName>
           <Files>
             <File>
+              <FileName>app_vofa_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\ace_robot_kit\APP\app_task\app_vofa_task.c</FilePath>
+            </File>
+            <File>
               <FileName>app_button_task.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\ace_robot_kit\APP\app_task\app_button_task.c</FilePath>
