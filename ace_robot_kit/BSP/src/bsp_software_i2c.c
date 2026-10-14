@@ -6,17 +6,12 @@
 #include "bsp_software_i2c_platform.h"
 #include <stddef.h>
 
-static uint8_t BSP_SOFTWARE_I2C_ValidPin(uint16_t pin)
-{
-    return pin != 0 && (pin & (pin - 1U)) == 0;
-}
-
 static uint8_t BSP_SOFTWARE_I2C_Valid(const BSP_SOFTWARE_I2C_Handle_t *handle)
 {
     return handle != NULL && BSP_SOFTWARE_I2C_VALID_PORT(handle->scl_port)
         && BSP_SOFTWARE_I2C_VALID_PORT(handle->sda_port)
-        && BSP_SOFTWARE_I2C_ValidPin(handle->scl_pin)
-        && BSP_SOFTWARE_I2C_ValidPin(handle->sda_pin)
+        && BSP_SOFTWARE_I2C_VALID_PIN(handle->scl_pin)
+        && BSP_SOFTWARE_I2C_VALID_PIN(handle->sda_pin)
         && (handle->scl_port != handle->sda_port || handle->scl_pin != handle->sda_pin)
         && handle->half_period_us != 0 && handle->timeout_us != 0;
 }
@@ -57,7 +52,7 @@ BSP_SOFTWARE_I2C_Status_t BSP_SOFTWARE_I2C_Init(BSP_SOFTWARE_I2C_Handle_t *handl
     handle->scl_port = NULL;
     handle->sda_port = NULL;
     if (!BSP_SOFTWARE_I2C_VALID_PORT(scl_port) || !BSP_SOFTWARE_I2C_VALID_PORT(sda_port)
-        || !BSP_SOFTWARE_I2C_ValidPin(scl_pin) || !BSP_SOFTWARE_I2C_ValidPin(sda_pin)
+        || !BSP_SOFTWARE_I2C_VALID_PIN(scl_pin) || !BSP_SOFTWARE_I2C_VALID_PIN(sda_pin)
         || (scl_port == sda_port && scl_pin == sda_pin)
         || BSP_SOFTWARE_I2C_HALF_PERIOD_US == 0 || BSP_SOFTWARE_I2C_TIMEOUT_US == 0) {
         return BSP_SOFTWARE_I2C_INVALID_PARAM;

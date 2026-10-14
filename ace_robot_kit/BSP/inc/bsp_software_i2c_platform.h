@@ -12,6 +12,10 @@
     ((port) == GPIOA || (port) == GPIOB || (port) == GPIOC || \
      (port) == GPIOD || (port) == GPIOE)
 
+/* AT32 引脚使用位掩码表示，软件 I2C 每根信号线仅允许选择一个引脚。 */
+#define BSP_SOFTWARE_I2C_VALID_PIN(pin) \
+    ((pin) != 0U && (((pin) & ((pin) - 1U)) == 0U))
+
 /* 开漏：写 1 是释放总线，写 0 才主动拉低；读值必须来自输入寄存器。
  * SDA 始终保持开漏输出，释放后即可读取，不需要切换输入/输出模式。
  */
