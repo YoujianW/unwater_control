@@ -4,6 +4,7 @@
 // TaskHandle_t LED_Task_handle;
 TaskHandle_t vofa_Task_handle;
 TaskHandle_t adc_Task_handle;
+TaskHandle_t i2c_Task_handle;
 TaskHandle_t button_Task_handle;
 // TaskHandle_t Sonar_Task_handle;
 
@@ -15,6 +16,7 @@ void app_task_create(void)
     // xTaskCreate(LED_Task_func,"LED_Task",128,NULL,0,&LED_Task_handle);
     xTaskCreate(vofa_Task_func,"vofa_Task",256,NULL,0,&vofa_Task_handle);
     xTaskCreate(adc_Task_func,"adc_Task",128,NULL,0,&adc_Task_handle);
+    xTaskCreate(i2c_Task_func,"i2c_Task",256,NULL,0,&i2c_Task_handle);
     xTaskCreate(button_Task_func,"button_Task",128,NULL,0,&button_Task_handle);
     // xTaskCreate(Sonar_Task_func,"Sonar_Task",128,NULL,0,&Sonar_Task_handle);
     xTaskCreate(Debug_Task_func,"Test_Task",128,NULL,0,&Debug_Task_handle);

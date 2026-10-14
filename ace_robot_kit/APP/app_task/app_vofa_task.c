@@ -3,7 +3,7 @@
 #include "vofa.h"
 #include "wk_usart.h"
 
-#define VOFA_SEND_INTERVAL_MS   1000
+#define VOFA_SEND_INTERVAL_MS   100
 
 void vofa_Task_func(void *pvParameters)
 {
@@ -15,15 +15,30 @@ void vofa_Task_func(void *pvParameters)
     VOFA_Init(&vofa_handle, &vofa_usart, VOFA_FORMAT_JUSTFLOAT);
     VOFA_SetChannelName(&vofa_handle, 0, "VREF_raw");
     VOFA_SetChannelName(&vofa_handle, 1, "Temperature_C");
+    VOFA_SetChannelName(&vofa_handle, 2, "Accel_X_g");
+    VOFA_SetChannelName(&vofa_handle, 3, "Accel_Y_g");
+    VOFA_SetChannelName(&vofa_handle, 4, "Accel_Z_g");
+    VOFA_SetChannelName(&vofa_handle, 5, "Gyro_X_dps");
+    VOFA_SetChannelName(&vofa_handle, 6, "Gyro_Y_dps");
+    VOFA_SetChannelName(&vofa_handle, 7, "Gyro_Z_dps");
+    VOFA_SetChannelName(&vofa_handle, 8, "MPU_Temp_C");
 
     while (1)
     {
         /* 固定执行周期用 vTaskDelayUntil()；执行完再等待用 vTaskDelay()。 */
         vTaskDelayUntil(&last_wake_time, pdMS_TO_TICKS(VOFA_SEND_INTERVAL_MS));
 
-        /* 通道 0 保留原 Debug 中的参考电压 ADC 原始值，通道 1 为摄氏温度。 */
+        /* 通道 0 为参考电压 ADC 原始值，通道 1 为摄氏温度。 */
         VOFA_SetChannelValue(&vofa_handle, 0, (float)adc_vref_raw);
         VOFA_SetChannelValue(&vofa_handle, 1, (float)adc_temperature_centi_c / 100.0f);
+
+        VOFA_SetChannelValue(&vofa_handle, 2, mpu6050_data.accel_x);
+        VOFA_SetChannelValue(&vofa_handle, 3, mpu6050_data.accel_y);
+        VOFA_SetChannelValue(&vofa_handle, 4, mpu6050_data.accel_z);
+        VOFA_SetChannelValue(&vofa_handle, 5, mpu6050_data.gyro_x);
+        VOFA_SetChannelValue(&vofa_handle, 6, mpu6050_data.gyro_y);
+        VOFA_SetChannelValue(&vofa_handle, 7, mpu6050_data.gyro_z);
+        VOFA_SetChannelValue(&vofa_handle, 8, mpu6050_data.temperature);
 
         BSP_USART_TxLock();
         VOFA_SendData(&vofa_handle);

@@ -10,6 +10,7 @@ extern "C" {
 #include "FreeRTOSConfig.h"
 #include "freertos_app.h"
 #include "app_adc_task.h"
+#include "app_i2c_task.h"
 #include "app_button_task.h"
 #include "app_vofa_task.h"
 
