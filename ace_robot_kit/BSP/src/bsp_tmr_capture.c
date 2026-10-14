@@ -1,14 +1,6 @@
 /***************************************************************
-Copyright (C), 2024-2026, Your Company Name
-
-FileName    : bsp_tmr_capture.c
-Description : 定时器输入捕获 - 通用实现
-Version     : V1.0
-
-History:
-Author      Date         Version     Description
-YourName    2026-05-20   V1.0        创建文件
-
+ * bsp_tmr_capture.c
+ * tmr_capture BSP 层实现
 ***************************************************************/
 #include "bsp_tmr_capture.h"
 #include "bsp_tmr_capture_platform.h"
