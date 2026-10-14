@@ -64,7 +64,7 @@ extern "C" {
 /*#define EXINT_MODULE_ENABLED--------------------*/
 #define FLASH_MODULE_ENABLED
 #define GPIO_MODULE_ENABLED
-/*#define I2C_MODULE_ENABLED----------------------*/
+#define I2C_MODULE_ENABLED
 #define MISC_MODULE_ENABLED
 #define PWC_MODULE_ENABLED
 /*#define RTC_MODULE_ENABLED----------------------*/

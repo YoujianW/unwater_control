@@ -189,6 +189,9 @@ void wk_periph_clock_config(void)
   /* enable gpiod periph clock */
   crm_periph_clock_enable(CRM_GPIOD_PERIPH_CLOCK, TRUE);
 
+  /* enable gpioe periph clock */
+  crm_periph_clock_enable(CRM_GPIOE_PERIPH_CLOCK, TRUE);
+
   /* enable adc1 periph clock */
   crm_periph_clock_enable(CRM_ADC1_PERIPH_CLOCK, TRUE);
 
@@ -200,6 +203,9 @@ void wk_periph_clock_config(void)
 
   /* enable tmr14 periph clock */
   crm_periph_clock_enable(CRM_TMR14_PERIPH_CLOCK, TRUE);
+
+  /* enable i2c1 periph clock */
+  crm_periph_clock_enable(CRM_I2C1_PERIPH_CLOCK, TRUE);
 }
 
 /**

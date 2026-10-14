@@ -28,6 +28,7 @@
 #include "at32f403a_407_wk_config.h"
 #include "wk_adc.h"
 #include "wk_debug.h"
+#include "wk_i2c.h"
 #include "wk_tmr.h"
 #include "wk_usart.h"
 #include "wk_dma.h"
@@ -122,6 +123,9 @@ int main(void)
 
   /* init tmr13 function. */
   wk_tmr13_init();
+
+  /* init i2c1 function. */
+  wk_i2c1_init();
 
   /* add user code begin 2 */
   app_config_init();

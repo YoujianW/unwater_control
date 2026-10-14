@@ -115,6 +115,10 @@ extern "C" {
 /* add user code end dma define */
 
 /* Private defines -------------------------------------------------------------*/
+#define soft_i2c_scl_PIN    GPIO_PINS_2
+#define soft_i2c_scl_GPIO_PORT    GPIOE
+#define soft_i2c_sda_PIN    GPIO_PINS_4
+#define soft_i2c_sda_GPIO_PORT    GPIOE
 #define LED0_PIN    GPIO_PINS_11
 #define LED0_GPIO_PORT    GPIOD
 #define LED1_PIN    GPIO_PINS_12

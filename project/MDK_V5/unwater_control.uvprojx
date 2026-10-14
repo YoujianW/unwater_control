@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>AT32F403AVGT7, USE_STDPERIPH_DRIVER, ARM_MATH_CM4, ARM_MATH_MATRIX_CHECK, ARM_MATH_ROUNDING, ARM_MATH_LOOPUNROLL, AT_START_F403A_V1</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\libraries\drivers\inc;..\..\libraries\cmsis\cm4\core_support;..\..\libraries\cmsis\cm4\device_support;..\inc;..\..\ace_robot_kit\APP\app_config;..\..\ace_robot_kit\APP\app_task;..\..\ace_robot_kit\BSP\inc;..\..\ace_robot_kit\Component\led;..\..\ace_robot_kit\Component\time;..\..\ace_robot_kit\Component\vofa;..\..\ace_robot_kit\Component\Common\Filter;..\..\ace_robot_kit\Component\Common\Input_event;..\..\ace_robot_kit\Component\Common\MultiButton;..\..\ace_robot_kit\Component\Common\MultiTimer;..\..\ace_robot_kit\Component\Common\circle_queue;..\..\ace_robot_kit\Component\Common\user_lib;..\..\ace_robot_kit\Component\button;..\..\middlewares\freertos\source;../../libraries/cmsis/dsp/include;../../libraries/cmsis/dsp/PrivateInclude;../../middlewares/freertos/source/include;../../middlewares/freertos/source/portable/memmang;../../middlewares/freertos/source/portable/rvds/ARM_CM4F</IncludePath>
+              <IncludePath>..\..\libraries\drivers\inc;..\..\libraries\cmsis\cm4\core_support;..\..\libraries\cmsis\cm4\device_support;..\inc;..\..\ace_robot_kit\APP\app_config;..\..\ace_robot_kit\APP\app_task;..\..\ace_robot_kit\BSP\inc;..\..\ace_robot_kit\Component\led;..\..\ace_robot_kit\Component\time;..\..\ace_robot_kit\Component\vofa;..\..\ace_robot_kit\Component\Common\Filter;..\..\ace_robot_kit\Component\Common\Input_event;..\..\ace_robot_kit\Component\Common\MultiButton;..\..\ace_robot_kit\Component\Common\MultiTimer;..\..\ace_robot_kit\Component\Common\circle_queue;..\..\ace_robot_kit\Component\Common\user_lib;..\..\ace_robot_kit\Component\button;..\..\middlewares\freertos\source;..\..\ace_robot_kit\Component\mpu6050;../../libraries/cmsis/dsp/include;../../libraries/cmsis/dsp/PrivateInclude;../../middlewares/freertos/source/include;../../middlewares/freertos/source/portable/memmang;../../middlewares/freertos/source/portable/rvds/ARM_CM4F</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -442,6 +442,11 @@
               <FileType>1</FileType>
               <FilePath>..\src\wk_gpio.c</FilePath>
             </File>
+            <File>
+              <FileName>wk_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\wk_i2c.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -461,6 +466,11 @@
               <FileName>at32f403a_407_gpio.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\libraries\drivers\src\at32f403a_407_gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>at32f403a_407_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\libraries\drivers\src\at32f403a_407_i2c.c</FilePath>
             </File>
             <File>
               <FileName>at32f403a_407_usart.c</FileName>
@@ -598,6 +608,11 @@
           <GroupName>ace_robot_kit/APP</GroupName>
           <Files>
             <File>
+              <FileName>app_i2c_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\ace_robot_kit\APP\app_task\app_i2c_task.c</FilePath>
+            </File>
+            <File>
               <FileName>app_vofa_task.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\ace_robot_kit\APP\app_task\app_vofa_task.c</FilePath>
@@ -633,6 +648,16 @@
           <GroupName>ace_robot_kit/BSP</GroupName>
           <Files>
             <File>
+              <FileName>bsp_software_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\ace_robot_kit\BSP\src\bsp_software_i2c.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\ace_robot_kit\BSP\src\bsp_i2c.c</FilePath>
+            </File>
+            <File>
               <FileName>bsp_adc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\ace_robot_kit\BSP\src\bsp_adc.c</FilePath>
@@ -657,6 +682,11 @@
         <Group>
           <GroupName>ace_robot_kit/Component</GroupName>
           <Files>
+            <File>
+              <FileName>mpu6050.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\ace_robot_kit\Component\mpu6050\mpu6050.c</FilePath>
+            </File>
             <File>
               <FileName>button.c</FileName>
               <FileType>1</FileType>
