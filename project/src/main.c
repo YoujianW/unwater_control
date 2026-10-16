@@ -29,6 +29,7 @@
 #include "wk_adc.h"
 #include "wk_debug.h"
 #include "wk_i2c.h"
+#include "wk_spi.h"
 #include "wk_tmr.h"
 #include "wk_usart.h"
 #include "wk_dma.h"
@@ -126,6 +127,9 @@ int main(void)
 
   /* init i2c1 function. */
   wk_i2c1_init();
+
+  /* init spi2 function. */
+  wk_spi2_init();
 
   /* add user code begin 2 */
   app_config_init();

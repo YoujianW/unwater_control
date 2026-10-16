@@ -119,6 +119,8 @@ extern "C" {
 #define soft_i2c_scl_GPIO_PORT    GPIOE
 #define soft_i2c_sda_PIN    GPIO_PINS_4
 #define soft_i2c_sda_GPIO_PORT    GPIOE
+#define W25Q16_CS_PIN    GPIO_PINS_12
+#define W25Q16_CS_GPIO_PORT    GPIOB
 #define LED0_PIN    GPIO_PINS_11
 #define LED0_GPIO_PORT    GPIOD
 #define LED1_PIN    GPIO_PINS_12

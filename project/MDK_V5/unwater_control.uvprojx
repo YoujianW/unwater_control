@@ -447,6 +447,11 @@
               <FileType>1</FileType>
               <FilePath>..\src\wk_i2c.c</FilePath>
             </File>
+            <File>
+              <FileName>wk_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\wk_spi.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -486,6 +491,11 @@
               <FileName>at32f403a_407_adc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\libraries\drivers\src\at32f403a_407_adc.c</FilePath>
+            </File>
+            <File>
+              <FileName>at32f403a_407_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\libraries\drivers\src\at32f403a_407_spi.c</FilePath>
             </File>
             <File>
               <FileName>at32f403a_407_dma.c</FileName>
@@ -647,6 +657,11 @@
         <Group>
           <GroupName>ace_robot_kit/BSP</GroupName>
           <Files>
+            <File>
+              <FileName>bsp_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\ace_robot_kit\BSP\src\bsp_spi.c</FilePath>
+            </File>
             <File>
               <FileName>bsp_software_i2c.c</FileName>
               <FileType>1</FileType>
