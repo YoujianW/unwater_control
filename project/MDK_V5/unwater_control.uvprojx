@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>AT32F403AVGT7, USE_STDPERIPH_DRIVER, ARM_MATH_CM4, ARM_MATH_MATRIX_CHECK, ARM_MATH_ROUNDING, ARM_MATH_LOOPUNROLL, AT_START_F403A_V1</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\libraries\drivers\inc;..\..\libraries\cmsis\cm4\core_support;..\..\libraries\cmsis\cm4\device_support;..\inc;..\..\ace_robot_kit\APP\app_config;..\..\ace_robot_kit\APP\app_task;..\..\ace_robot_kit\BSP\inc;..\..\ace_robot_kit\Component\led;..\..\ace_robot_kit\Component\time;..\..\ace_robot_kit\Component\vofa;..\..\ace_robot_kit\Component\Common\Filter;..\..\ace_robot_kit\Component\Common\Input_event;..\..\ace_robot_kit\Component\Common\MultiButton;..\..\ace_robot_kit\Component\Common\MultiTimer;..\..\ace_robot_kit\Component\Common\circle_queue;..\..\ace_robot_kit\Component\Common\user_lib;..\..\ace_robot_kit\Component\button;..\..\middlewares\freertos\source;..\..\ace_robot_kit\Component\mpu6050;../../libraries/cmsis/dsp/include;../../libraries/cmsis/dsp/PrivateInclude;../../middlewares/freertos/source/include;../../middlewares/freertos/source/portable/memmang;../../middlewares/freertos/source/portable/rvds/ARM_CM4F</IncludePath>
+              <IncludePath>..\..\libraries\drivers\inc;..\..\libraries\cmsis\cm4\core_support;..\..\libraries\cmsis\cm4\device_support;..\inc;..\..\ace_robot_kit\APP\app_config;..\..\ace_robot_kit\APP\app_task;..\..\ace_robot_kit\BSP\inc;..\..\ace_robot_kit\Component\led;..\..\ace_robot_kit\Component\time;..\..\ace_robot_kit\Component\vofa;..\..\ace_robot_kit\Component\Common\Filter;..\..\ace_robot_kit\Component\Common\Input_event;..\..\ace_robot_kit\Component\Common\MultiButton;..\..\ace_robot_kit\Component\Common\MultiTimer;..\..\ace_robot_kit\Component\Common\circle_queue;..\..\ace_robot_kit\Component\Common\user_lib;..\..\ace_robot_kit\Component\button;..\..\middlewares\freertos\source;..\..\ace_robot_kit\Component\mpu6050;..\..\ace_robot_kit\Component\w25q16;../../libraries/cmsis/dsp/include;../../libraries/cmsis/dsp/PrivateInclude;../../middlewares/freertos/source/include;../../middlewares/freertos/source/portable/memmang;../../middlewares/freertos/source/portable/rvds/ARM_CM4F</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -618,6 +618,11 @@
           <GroupName>ace_robot_kit/APP</GroupName>
           <Files>
             <File>
+              <FileName>app_spi_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\ace_robot_kit\APP\app_task\app_spi_task.c</FilePath>
+            </File>
+            <File>
               <FileName>app_i2c_task.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\ace_robot_kit\APP\app_task\app_i2c_task.c</FilePath>
@@ -697,6 +702,11 @@
         <Group>
           <GroupName>ace_robot_kit/Component</GroupName>
           <Files>
+            <File>
+              <FileName>w25q16.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\ace_robot_kit\Component\w25q16\w25q16.c</FilePath>
+            </File>
             <File>
               <FileName>mpu_6050_software_i2c.c</FileName>
               <FileType>1</FileType>

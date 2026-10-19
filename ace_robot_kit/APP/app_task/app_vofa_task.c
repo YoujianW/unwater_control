@@ -40,8 +40,9 @@ void vofa_Task_func(void *pvParameters)
         VOFA_SetChannelValue(&vofa_handle, 7, mpu6050_data.gyro_z);
         VOFA_SetChannelValue(&vofa_handle, 8, mpu6050_data.temperature);
 
-        BSP_USART_TxLock();
-        VOFA_SendData(&vofa_handle);
-        BSP_USART_TxUnlock();
+        /* 暂停 VOFA 串口发送，先由 SPI 任务打印 W25Q16 读写结果。 */
+        // BSP_USART_TxLock();
+        // VOFA_SendData(&vofa_handle);
+        // BSP_USART_TxUnlock();
     }
 }
