@@ -131,6 +131,9 @@ int main(void)
   /* init spi2 function. */
   wk_spi2_init();
 
+  /* init i2c2 function. */
+  wk_i2c2_init();
+
   /* add user code begin 2 */
   app_config_init();
   /* add user code end 2 */

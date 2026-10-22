@@ -12,6 +12,7 @@ extern "C" {
 #include "app_adc_task.h"
 #include "app_i2c_task.h"
 #include "app_spi_task.h"
+#include "app_oled_task.h"
 #include "app_button_task.h"
 #include "app_vofa_task.h"
 

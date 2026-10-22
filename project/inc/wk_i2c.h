@@ -60,6 +60,9 @@ extern "C" {
   /* init i2c1 function. */
   void wk_i2c1_init(void);
 
+  /* init i2c2 function. */
+  void wk_i2c2_init(void);
+
 /* add user code begin exported functions */
 
 /* add user code end exported functions */
