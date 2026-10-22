@@ -31,6 +31,7 @@
 /* private includes ----------------------------------------------------------*/
 /* add user code begin private includes */
 #include "app_config.h"
+#include "app_sbus_task.h"
 /* add user code end private includes */
 
 /* private typedef -----------------------------------------------------------*/
@@ -241,6 +242,33 @@ void DMA1_Channel1_IRQHandler(void)
   /* add user code begin DMA1_Channel1_IRQ 1 */
 
   /* add user code end DMA1_Channel1_IRQ 1 */
+}
+
+/**
+  * @brief  this function handles USART2 handler.
+  * @param  none
+  * @retval none
+  */
+void USART2_IRQHandler(void)
+{
+  /* add user code begin USART2_IRQ 0 */
+
+  /* add user code end USART2_IRQ 0 */
+
+  __IO uint16_t val_rx;
+
+  if(usart_interrupt_flag_get(USART2, USART_RDBF_FLAG) != RESET)
+  {
+    /* add user code begin USART2_USART_RDBF_FLAG */
+    /* handle data received and clear flag */
+    val_rx = usart_data_receive(USART2);
+    APP_SBUS_IRQHandler((uint8_t)val_rx);
+    /* add user code end USART2_USART_RDBF_FLAG */
+  }
+
+  /* add user code begin USART2_IRQ 1 */
+
+  /* add user code end USART2_IRQ 1 */
 }
 
 /**

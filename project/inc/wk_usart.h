@@ -60,6 +60,9 @@ extern "C" {
   /* init usart1 function. */
   void wk_usart1_init(void);
 
+  /* init usart2 function. */
+  void wk_usart2_init(void);
+
 /* add user code begin exported functions */
 
 /* add user code end exported functions */

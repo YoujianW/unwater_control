@@ -65,6 +65,7 @@ void DebugMon_Handler(void);
 void SysTick_Handler(void);
 
 void DMA1_Channel1_IRQHandler(void);
+void USART2_IRQHandler(void);
 void TMR8_OVF_TMR13_IRQHandler(void);
 /* add user code begin exported functions */
 

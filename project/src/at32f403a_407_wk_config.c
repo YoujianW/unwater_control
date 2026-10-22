@@ -207,6 +207,9 @@ void wk_periph_clock_config(void)
   /* enable spi2 periph clock */
   crm_periph_clock_enable(CRM_SPI2_PERIPH_CLOCK, TRUE);
 
+  /* enable usart2 periph clock */
+  crm_periph_clock_enable(CRM_USART2_PERIPH_CLOCK, TRUE);
+
   /* enable i2c1 periph clock */
   crm_periph_clock_enable(CRM_I2C1_PERIPH_CLOCK, TRUE);
 
@@ -231,6 +234,7 @@ void wk_nvic_config(void)
   NVIC_SetPriority(PendSV_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(), 15, 0));
   NVIC_SetPriority(SysTick_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(), 15, 0));
   nvic_irq_enable(DMA1_Channel1_IRQn, 5, 0);
+  nvic_irq_enable(USART2_IRQn, 5, 0);
   nvic_irq_enable(TMR8_OVF_TMR13_IRQn, 5, 0);
 }
 

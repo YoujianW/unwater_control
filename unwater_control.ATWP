@@ -99,6 +99,21 @@
             <ParametersSub name="RealBaudRate" value="115163"/>
         </Parameters>
     </USART1>
+    <USART2>
+        <Mode>
+            <ModeSub name="Mode" value="Asynchronous"/>
+        </Mode>
+        <Parameters>
+            <ParametersSub name="BaudRate" value="100000"/>
+            <ParametersSub name="RealBaudRate" value="100000"/>
+            <ParametersSub name="Databitnum" value="USART_DATA_9BITS"/>
+            <ParametersSub name="Parityselection" value="USART_PARITY_EVEN"/>
+            <ParametersSub name="STOPbitnum" value="USART_STOP_2_BIT"/>
+        </Parameters>
+        <Interrupts>
+            <InterruptsSub name="Interrupt_RDBF" value="TRUE"/>
+        </Interrupts>
+    </USART2>
     <CMSIS_DSP>
         <Mode>
             <ModeSub name="CMSIS_DSP_State" value="TRUE"/>
@@ -149,6 +164,7 @@
         <I2C2_ERR_IRQHandler>0;5;0;1;0;0</I2C2_ERR_IRQHandler>
         <SPI2_I2S2EXT_IRQHandler>0;5;0;1;0;0</SPI2_I2S2EXT_IRQHandler>
         <USART1_IRQHandler>0;5;0;1;0;0</USART1_IRQHandler>
+        <USART2_IRQHandler>1;5;0;1;0;1</USART2_IRQHandler>
         <TMR8_OVF_TMR13_IRQHandler>1;5;0;1;0;1</TMR8_OVF_TMR13_IRQHandler>
     </NVIC>
     <GPIO>
@@ -213,6 +229,8 @@
         <PinSub pinname="PC15" signalname="CRM_LEXT_OUT" signaltype="2"/>
         <PinSub pinname="HEXT_IN" signalname="CRM_HEXT_IN" signaltype="2"/>
         <PinSub pinname="HEXT_OUT" signalname="CRM_HEXT_OUT" signaltype="2"/>
+        <PinSub pinname="PA2" signalname="USART2_TX" signaltype="2"/>
+        <PinSub pinname="PA3" signalname="USART2_RX" signaltype="2"/>
         <PinSub pinname="PB10" signalname="I2C2_SCL" signaltype="2"/>
         <PinSub pinname="PB11" signalname="I2C2_SDA" signaltype="2"/>
         <PinSub pinname="PB12" signalname="GPIO_Output" signaltype="3"/>
@@ -261,5 +279,6 @@
         <RankSub RankNum="48" FixPosFlag="FALSE" FuncName="wk_i2c1_init" InstanceName="I2C1" CodeSection="i2c1 function" MainDoNotCallFlag="FALSE"/>
         <RankSub RankNum="41" FixPosFlag="FALSE" FuncName="wk_spi2_init" InstanceName="SPI2" CodeSection="spi2 function" MainDoNotCallFlag="FALSE"/>
         <RankSub RankNum="49" FixPosFlag="FALSE" FuncName="wk_i2c2_init" InstanceName="I2C2" CodeSection="i2c2 function" MainDoNotCallFlag="FALSE"/>
+        <RankSub RankNum="33" FixPosFlag="FALSE" FuncName="wk_usart2_init" InstanceName="USART2" CodeSection="usart2 function" MainDoNotCallFlag="FALSE"/>
     </FunctionRankInfo>
 </Root>

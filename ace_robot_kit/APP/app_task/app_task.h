@@ -15,6 +15,7 @@ extern "C" {
 #include "app_oled_task.h"
 #include "app_button_task.h"
 #include "app_vofa_task.h"
+#include "app_sbus_task.h"
 
 
 void app_task_create(void);

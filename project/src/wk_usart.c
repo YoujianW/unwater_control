@@ -88,6 +88,62 @@ void wk_usart1_init(void)
   /* add user code end usart1_init 3 */
 }
 
+/**
+  * @brief  init usart2 function
+  * @param  none
+  * @retval none
+  */
+void wk_usart2_init(void)
+{
+  /* add user code begin usart2_init 0 */
+
+  /* add user code end usart2_init 0 */
+
+  gpio_init_type gpio_init_struct;
+  gpio_default_para_init(&gpio_init_struct);
+
+  /* add user code begin usart2_init 1 */
+
+  /* add user code end usart2_init 1 */
+
+  /* configure the TX pin */
+  gpio_init_struct.gpio_drive_strength = GPIO_DRIVE_STRENGTH_MODERATE;
+  gpio_init_struct.gpio_out_type = GPIO_OUTPUT_PUSH_PULL;
+  gpio_init_struct.gpio_mode = GPIO_MODE_MUX;
+  gpio_init_struct.gpio_pins = GPIO_PINS_2;
+  gpio_init_struct.gpio_pull = GPIO_PULL_NONE;
+  gpio_init(GPIOA, &gpio_init_struct);
+
+  /* configure the RX pin */
+  gpio_init_struct.gpio_drive_strength = GPIO_DRIVE_STRENGTH_MODERATE;
+  gpio_init_struct.gpio_out_type  = GPIO_OUTPUT_PUSH_PULL;
+  gpio_init_struct.gpio_mode = GPIO_MODE_INPUT;
+  gpio_init_struct.gpio_pins = GPIO_PINS_3;
+  gpio_init_struct.gpio_pull = GPIO_PULL_NONE;
+  gpio_init(GPIOA, &gpio_init_struct);
+
+  /* configure param */
+  usart_init(USART2, 100000, USART_DATA_9BITS, USART_STOP_2_BIT);
+  usart_transmitter_enable(USART2, TRUE);
+  usart_receiver_enable(USART2, TRUE);
+  usart_parity_selection_config(USART2, USART_PARITY_EVEN);
+
+  usart_hardware_flow_control_set(USART2, USART_HARDWARE_FLOW_NONE);
+
+  /* enable receive data buffer full interrupt */
+  usart_interrupt_enable(USART2, USART_RDBF_INT, TRUE);
+
+  /* add user code begin usart2_init 2 */
+
+  /* add user code end usart2_init 2 */
+
+  usart_enable(USART2, TRUE);
+
+  /* add user code begin usart2_init 3 */
+
+  /* add user code end usart2_init 3 */
+}
+
 /* add user code begin 1 */
 
 /* add user code end 1 */

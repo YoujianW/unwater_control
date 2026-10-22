@@ -3,6 +3,7 @@
 
 // TaskHandle_t LED_Task_handle;
 TaskHandle_t vofa_Task_handle;
+TaskHandle_t sbus_Task_handle;
 TaskHandle_t adc_Task_handle;
 TaskHandle_t i2c_Task_handle;
 TaskHandle_t spi_Task_handle;
@@ -17,6 +18,7 @@ void app_task_create(void)
 {
     // xTaskCreate(LED_Task_func,"LED_Task",128,NULL,0,&LED_Task_handle);
     xTaskCreate(vofa_Task_func,"vofa_Task",256,NULL,0,&vofa_Task_handle);
+    xTaskCreate(sbus_Task_func,"sbus_Task",256,NULL,0,&sbus_Task_handle);
     xTaskCreate(adc_Task_func,"adc_Task",128,NULL,0,&adc_Task_handle);
     xTaskCreate(i2c_Task_func,"i2c_Task",256,NULL,0,&i2c_Task_handle);
     xTaskCreate(spi_Task_func,"spi_Task",512,NULL,0,&spi_Task_handle);

@@ -134,6 +134,9 @@ int main(void)
   /* init i2c2 function. */
   wk_i2c2_init();
 
+  /* init usart2 function. */
+  wk_usart2_init();
+
   /* add user code begin 2 */
   app_config_init();
   /* add user code end 2 */
