@@ -29,6 +29,7 @@
 #include "wk_adc.h"
 #include "wk_debug.h"
 #include "wk_i2c.h"
+#include "wk_pwc.h"
 #include "wk_spi.h"
 #include "wk_tmr.h"
 #include "wk_usart.h"
@@ -92,6 +93,9 @@ int main(void)
 
   /* init debug function. */
   wk_debug_config();
+
+  /* init pwc function. */
+  wk_pwc_init();
 
   /* nvic config. */
   wk_nvic_config();

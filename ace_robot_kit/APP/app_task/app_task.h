@@ -16,6 +16,7 @@ extern "C" {
 #include "app_button_task.h"
 #include "app_vofa_task.h"
 #include "app_sbus_task.h"
+#include "app_low_pwc_task.h"
 
 
 void app_task_create(void);

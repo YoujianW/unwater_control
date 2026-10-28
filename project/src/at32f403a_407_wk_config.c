@@ -215,6 +215,9 @@ void wk_periph_clock_config(void)
 
   /* enable i2c2 periph clock */
   crm_periph_clock_enable(CRM_I2C2_PERIPH_CLOCK, TRUE);
+
+  /* enable pwc periph clock */
+  crm_periph_clock_enable(CRM_PWC_PERIPH_CLOCK, TRUE);
 }
 
 /**

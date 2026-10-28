@@ -452,6 +452,11 @@
               <FileType>1</FileType>
               <FilePath>..\src\wk_spi.c</FilePath>
             </File>
+            <File>
+              <FileName>wk_pwc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\wk_pwc.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -506,6 +511,11 @@
               <FileName>at32f403a_407_flash.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\libraries\drivers\src\at32f403a_407_flash.c</FilePath>
+            </File>
+            <File>
+              <FileName>at32f403a_407_exint.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\libraries\drivers\src\at32f403a_407_exint.c</FilePath>
             </File>
             <File>
               <FileName>at32f403a_407_misc.c</FileName>
@@ -667,11 +677,21 @@
               <FileType>1</FileType>
               <FilePath>..\..\ace_robot_kit\APP\app_task\app_task.c</FilePath>
             </File>
+            <File>
+              <FileName>app_low_pwc_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\ace_robot_kit\APP\app_task\app_low_pwc_task.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>ace_robot_kit/BSP</GroupName>
           <Files>
+            <File>
+              <FileName>bsp_pwc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\ace_robot_kit\BSP\src\bsp_pwc.c</FilePath>
+            </File>
             <File>
               <FileName>bsp_spi.c</FileName>
               <FileType>1</FileType>

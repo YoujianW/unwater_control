@@ -9,6 +9,7 @@ TaskHandle_t i2c_Task_handle;
 TaskHandle_t spi_Task_handle;
 TaskHandle_t oled_Task_handle;
 TaskHandle_t button_Task_handle;
+TaskHandle_t low_power_Task_handle;
 // TaskHandle_t Sonar_Task_handle;
 
 // 如果堆栈空间足够，建议给到512，否则有时串口打印浮点数会卡死
@@ -26,6 +27,7 @@ void app_task_create(void)
     xTaskCreate(button_Task_func,"button_Task",128,NULL,0,&button_Task_handle);
     // xTaskCreate(Sonar_Task_func,"Sonar_Task",128,NULL,0,&Sonar_Task_handle);
     xTaskCreate(Debug_Task_func,"Test_Task",128,NULL,0,&Debug_Task_handle);
+    xTaskCreate(low_power_Task_func,"low_power_Task",128,NULL,0,&low_power_Task_handle);
 }
 
 void app_freertos_init(void)

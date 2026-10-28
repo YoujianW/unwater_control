@@ -263,7 +263,7 @@ void USART2_IRQHandler(void)
     /* handle data received and clear flag */
     val_rx = usart_data_receive(USART2);
     APP_SBUS_IRQHandler((uint8_t)val_rx);
-    /* add user code end USART2_USART_RDBF_FLAG */
+    /* add user code end USART2_USART_RDBF_FLAG */ 
   }
 
   /* add user code begin USART2_IRQ 1 */
