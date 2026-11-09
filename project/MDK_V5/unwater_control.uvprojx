@@ -807,6 +807,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\ace_robot_kit\Component\vofa\vofa.c</FilePath>
             </File>
+            <File>
+              <FileName>crc_check.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\ace_robot_kit\Component\Common\crc_check\crc_check.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

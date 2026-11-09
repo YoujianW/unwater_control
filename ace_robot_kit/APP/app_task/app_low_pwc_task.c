@@ -2,7 +2,7 @@
 #include "app_task.h"
 #include "bsp_pwc.h"
 
-#define LOW_POWER_STANDBY_DELAY_MS  (5UL * 60UL * 1000UL)
+#define LOW_POWER_STANDBY_DELAY_S   (8UL * 60UL * 60UL)
 
 void low_power_Task_func(void *pvParameters)
 {
@@ -15,8 +15,9 @@ void low_power_Task_func(void *pvParameters)
     BSP_PWC_ClearWakeupFlag();
     BSP_PWC_WakeupPinEnable(1);
 
-    /* 每次启动运行 5 分钟；会进入standby 模式，WakeUp 引脚有上升沿时，standby 被唤醒，程序从头重新开始。 */
-    vTaskDelayUntil(&last_wake_time, pdMS_TO_TICKS(LOW_POWER_STANDBY_DELAY_MS));
+    /* 每次启动运行 8 小时；会进入standby 模式，WakeUp 引脚有上升沿时，standby 被唤醒，程序从头重新开始。 */
+    /* 按秒转换为 tick，避免长延时使用 pdMS_TO_TICKS 时发生整数溢出。 */
+    vTaskDelayUntil(&last_wake_time, LOW_POWER_STANDBY_DELAY_S * configTICK_RATE_HZ);
 
     while (1)
     {
