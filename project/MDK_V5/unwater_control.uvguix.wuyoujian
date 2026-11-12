@@ -93,8 +93,8 @@
       <flags>2</flags>
       <showCmd>3</showCmd>
       <MinPosition>
-        <xPos>-1</xPos>
-        <yPos>-1</yPos>
+        <xPos>-32000</xPos>
+        <yPos>-32000</yPos>
       </MinPosition>
       <MaxPosition>
         <xPos>-1</xPos>
@@ -3624,9 +3624,9 @@
       </Doc>
       <Doc>
         <Name>..\..\ace_robot_kit\APP\app_task\app_spi_task.c</Name>
-        <ColumnNumber>5</ColumnNumber>
-        <TopLine>43</TopLine>
-        <CurrentLine>53</CurrentLine>
+        <ColumnNumber>0</ColumnNumber>
+        <TopLine>1</TopLine>
+        <CurrentLine>21</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
