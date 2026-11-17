@@ -31,7 +31,8 @@ typedef struct {
  * @param spi      SPI 外设基地址（如 SPI2）
  * @param cs_port  片选 GPIO 端口（如 GPIOB）
  * @param cs_pin   片选引脚位掩码（如 GPIO_PINS_12）
- * @note 调用前由 wk_spi / wk_gpio 完成 8 位全双工主机和片选输出配置。
+ * @note 调用前由 wk_spi / wk_gpio 完成 8 位主机和片选输出配置。
+ *       支持全双工收发，或单线半双工发送（SPI_TRANSMIT_HALF_DUPLEX_TX）。
  *       收发前须初始化时间组件及其硬件定时器，仅在中断开启的任务或主循环调用。
  *       不支持与同一 SPI 的 DMA、中断收发混用；多任务共享总线时，
  *       调用方须锁住从 CS_Low 到 CS_High 的整个事务。
@@ -69,12 +70,15 @@ void BSP_SPI_CS_High(BSP_SPI_Handle_t *handle);
  * @note 支持 tx_data == rx_data 原地交换。BSP_SPI_TIMEOUT_MS 限制整个数据块，
  *       超时计算支持毫秒计数回绕；失败时缓冲区可能已包含部分数据。
  *       成功前会等待发送缓冲区为空、SPI 总线空闲。
+ *       半双工发送模式只接受 tx_data 非 NULL 且 rx_data 为 NULL，
+ *       不切换方向；接收模式及单工接收均返回 0。
  */
 uint8_t BSP_SPI_Transfer(BSP_SPI_Handle_t *handle,
     const uint8_t *tx_data, uint8_t *rx_data, uint16_t size);
 
 /**
- * @brief 发送数据块（阻塞），同步读出并丢弃接收数据，不操作片选
+ * @brief 发送数据块（阻塞），支持全双工及单线半双工发送，不操作片选
+ * @note 全双工同步读出并丢弃接收数据；半双工发送不等待接收标志。
  * @return 1：发送完成；0：参数无效、超时或硬件错误
  */
 uint8_t BSP_SPI_SendBuffer(BSP_SPI_Handle_t *handle,
@@ -82,6 +86,7 @@ uint8_t BSP_SPI_SendBuffer(BSP_SPI_Handle_t *handle,
 
 /**
  * @brief 接收数据块（阻塞），发送 BSP_SPI_DUMMY_BYTE 产生时钟，不操作片选
+ * @note 仅支持全双工模式。
  * @return 1：接收完成；0：参数无效、超时或硬件错误
  */
 uint8_t BSP_SPI_ReceiveBuffer(BSP_SPI_Handle_t *handle,
@@ -91,6 +96,7 @@ uint8_t BSP_SPI_ReceiveBuffer(BSP_SPI_Handle_t *handle,
  * @brief 交换一个字节（阻塞），不操作片选
  * @return 接收到的字节；失败时返回 0，0 也可能是有效数据
  * @note 需要区分通信失败时，使用 size = 1 的 BSP_SPI_Transfer。
+ *       仅支持全双工模式。
  */
 uint8_t BSP_SPI_ReadWriteByte(BSP_SPI_Handle_t *handle, uint8_t data);
 

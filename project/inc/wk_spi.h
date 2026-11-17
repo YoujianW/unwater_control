@@ -57,6 +57,9 @@ extern "C" {
 
 /* exported functions ------------------------------------------------------- */
 
+  /* init spi1 function. */
+  void wk_spi1_init(void);
+
   /* init spi2 function. */
   void wk_spi2_init(void);
 

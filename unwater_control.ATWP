@@ -67,6 +67,18 @@
             <ModeSub name="Wake-up pin1" value="TRUE"/>
         </Mode>
     </PWC>
+    <SPI1>
+        <Mode>
+            <ModeSub name="Mode" value="Simplex_Bidirectional_Master"/>
+        </Mode>
+        <Parameters>
+            <ParametersSub name="TransmissionMode" value="SPI_TRANSMIT_HALF_DUPLEX_TX"/>
+            <ParametersSub name="Mode" value="SPI_MODE_MASTER"/>
+            <ParametersSub name="FirstBit" value="SPI_FIRST_BIT_MSB"/>
+            <ParametersSub name="ClkDivision" value="SPI_MCLK_DIV_8"/>
+            <ParametersSub name="ClockFrequency" value="15000000"/>
+        </Parameters>
+    </SPI1>
     <SPI2>
         <Mode>
             <ModeSub name="Mode" value="Full_Duplex_Master"/>
@@ -159,6 +171,7 @@
         <SVC_Handler>1;0;0;0;0;0</SVC_Handler>
         <PendSV_Handler>1;15;0;1;0;0</PendSV_Handler>
         <SysTick_Handler>1;15;0;1;0;1</SysTick_Handler>
+        <PVM_IRQHandler>0;5;0;1;0;0</PVM_IRQHandler>
         <FLASH_IRQHandler>0;5;0;1;0;0</FLASH_IRQHandler>
         <CRM_IRQHandler>0;5;0;1;0;0</CRM_IRQHandler>
         <DMA1_Channel1_IRQHandler>1;5;0;1;0;1</DMA1_Channel1_IRQHandler>
@@ -167,6 +180,7 @@
         <I2C1_ERR_IRQHandler>0;5;0;1;0;0</I2C1_ERR_IRQHandler>
         <I2C2_EVT_IRQHandler>0;5;0;1;0;0</I2C2_EVT_IRQHandler>
         <I2C2_ERR_IRQHandler>0;5;0;1;0;0</I2C2_ERR_IRQHandler>
+        <SPI1_IRQHandler>0;5;0;1;0;0</SPI1_IRQHandler>
         <SPI2_I2S2EXT_IRQHandler>0;5;0;1;0;0</SPI2_I2S2EXT_IRQHandler>
         <USART1_IRQHandler>0;5;0;1;0;0</USART1_IRQHandler>
         <USART2_IRQHandler>1;5;0;1;0;1</USART2_IRQHandler>
@@ -182,6 +196,21 @@
             <Parameters name="GPIO_Outputlevel" value="GPIO_OUTPUTLEVEL_HIGH"/>
             <Parameters name="GPIO_Type" value="GPIO_OUTPUT_OPEN_DRAIN"/>
             <Parameters name="Label" value="soft_i2c_sda"/>
+        </Signal>
+        <Signal SignalName="GPIO_Output" PinName="PA4">
+            <Parameters name="GPIO_Outputlevel" value="GPIO_OUTPUTLEVEL_HIGH"/>
+            <Parameters name="Label" value="ST7789_CS"/>
+        </Signal>
+        <Signal SignalName="GPIO_Output" PinName="PA6">
+            <Parameters name="GPIO_Outputlevel" value="GPIO_OUTPUTLEVEL_HIGH"/>
+            <Parameters name="Label" value="ST7789_RES"/>
+        </Signal>
+        <Signal SignalName="GPIO_Output" PinName="PC4">
+            <Parameters name="GPIO_Outputlevel" value="GPIO_OUTPUTLEVEL_HIGH"/>
+            <Parameters name="Label" value="ST7789_DC"/>
+        </Signal>
+        <Signal SignalName="GPIO_Output" PinName="PC5">
+            <Parameters name="Label" value="ST7789_BLK"/>
         </Signal>
         <Signal SignalName="GPIO_Output" PinName="PB12">
             <Parameters name="GPIO_Outputlevel" value="GPIO_OUTPUTLEVEL_HIGH"/>
@@ -237,6 +266,12 @@
         <PinSub pinname="PA0" signalname="WKUP" signaltype="3"/>
         <PinSub pinname="PA2" signalname="USART2_TX" signaltype="2"/>
         <PinSub pinname="PA3" signalname="USART2_RX" signaltype="2"/>
+        <PinSub pinname="PA4" signalname="GPIO_Output" signaltype="3"/>
+        <PinSub pinname="PA5" signalname="SPI1_SCK" signaltype="2"/>
+        <PinSub pinname="PA6" signalname="GPIO_Output" signaltype="3"/>
+        <PinSub pinname="PA7" signalname="SPI1_MOSI" signaltype="2"/>
+        <PinSub pinname="PC4" signalname="GPIO_Output" signaltype="3"/>
+        <PinSub pinname="PC5" signalname="GPIO_Output" signaltype="3"/>
         <PinSub pinname="PB10" signalname="I2C2_SCL" signaltype="2"/>
         <PinSub pinname="PB11" signalname="I2C2_SDA" signaltype="2"/>
         <PinSub pinname="PB12" signalname="GPIO_Output" signaltype="3"/>
@@ -287,5 +322,6 @@
         <RankSub RankNum="41" FixPosFlag="FALSE" FuncName="wk_spi2_init" InstanceName="SPI2" CodeSection="spi2 function" MainDoNotCallFlag="FALSE"/>
         <RankSub RankNum="49" FixPosFlag="FALSE" FuncName="wk_i2c2_init" InstanceName="I2C2" CodeSection="i2c2 function" MainDoNotCallFlag="FALSE"/>
         <RankSub RankNum="33" FixPosFlag="FALSE" FuncName="wk_usart2_init" InstanceName="USART2" CodeSection="usart2 function" MainDoNotCallFlag="FALSE"/>
+        <RankSub RankNum="40" FixPosFlag="FALSE" FuncName="wk_spi1_init" InstanceName="SPI1" CodeSection="spi1 function" MainDoNotCallFlag="FALSE"/>
     </FunctionRankInfo>
 </Root>

@@ -31,12 +31,17 @@
 #define BSP_SPI_CS_LOW(port, pin)      gpio_bits_reset((gpio_type *)(port), (pin))
 #define BSP_SPI_CS_HIGH(port, pin)     gpio_bits_set((gpio_type *)(port), (pin))
 
+/* 单线半双工发送没有接收数据，不能等待 RDBF 或读取接收寄存器。 */
+#define BSP_SPI_TX_ONLY(bus) \
+    (((BSP_SPI_TypeDef *)(bus))->ctrl1_bit.slben != 0 && \
+     ((BSP_SPI_TypeDef *)(bus))->ctrl1_bit.slbtd != 0)
+
 /* 只校验轮询收发所需模式，不重新配置或复位外设。 */
 #define BSP_SPI_BUS_READY(bus) \
     (((BSP_SPI_TypeDef *)(bus))->ctrl1_bit.spien != 0 && \
      ((BSP_SPI_TypeDef *)(bus))->ctrl1_bit.msten != 0 && \
      ((BSP_SPI_TypeDef *)(bus))->ctrl1_bit.fbn == SPI_FRAME_8BIT && \
-     ((BSP_SPI_TypeDef *)(bus))->ctrl1_bit.slben == 0 && \
+     (((BSP_SPI_TypeDef *)(bus))->ctrl1_bit.slben == 0 || BSP_SPI_TX_ONLY(bus)) && \
      ((BSP_SPI_TypeDef *)(bus))->ctrl1_bit.ora == 0 && \
      ((BSP_SPI_TypeDef *)(bus))->ctrl1_bit.ccen == 0 && \
      ((BSP_SPI_TypeDef *)(bus))->i2sctrl_bit.i2smsel == 0 && \

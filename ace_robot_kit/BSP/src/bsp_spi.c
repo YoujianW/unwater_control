@@ -61,6 +61,8 @@ uint8_t BSP_SPI_Transfer(BSP_SPI_Handle_t *handle,
 
     void *bus = handle->spi_handle;
     if (!BSP_SPI_BUS_READY(bus)) return 0;
+    uint8_t tx_only = BSP_SPI_TX_ONLY(bus);
+    if (tx_only && (tx_data == NULL || rx_data != NULL)) return 0;
 
     uint32_t start_ms = BSP_SPI_GET_MS();
     /* 清除上次中止传输的残留数据，再等待硬件空闲。 */
@@ -77,14 +79,16 @@ uint8_t BSP_SPI_Transfer(BSP_SPI_Handle_t *handle,
             return 0;
         }
         BSP_SPI_SEND_BYTE(bus, tx_data != NULL ? *tx_data++ : BSP_SPI_DUMMY_BYTE);
-        if (!BSP_SPI_WaitFlag(bus, BSP_SPI_RX_READY_FLAG, 1, start_ms)) {
-            BSP_SPI_CLEAR_RX(bus);
-            return 0;
-        }
+        if (!tx_only) {
+            if (!BSP_SPI_WaitFlag(bus, BSP_SPI_RX_READY_FLAG, 1, start_ms)) {
+                BSP_SPI_CLEAR_RX(bus);
+                return 0;
+            }
 
-        /* 全双工每发送一字节都必须读取一字节，纯发送时也不能省略。 */
-        uint8_t value = BSP_SPI_READ_BYTE(bus);
-        if (rx_data != NULL) *rx_data++ = value;
+            /* 全双工每发送一字节都必须读取一字节，纯发送时也不能省略。 */
+            uint8_t value = BSP_SPI_READ_BYTE(bus);
+            if (rx_data != NULL) *rx_data++ = value;
+        }
         size--;
     }
     if (!BSP_SPI_WaitFlag(bus, BSP_SPI_TX_EMPTY_FLAG, 1, start_ms)

@@ -141,6 +141,9 @@ int main(void)
   /* init usart2 function. */
   wk_usart2_init();
 
+  /* init spi1 function. */
+  wk_spi1_init();
+
   /* add user code begin 2 */
   app_config_init();
   /* add user code end 2 */

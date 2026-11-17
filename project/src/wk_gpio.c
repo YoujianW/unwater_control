@@ -57,6 +57,9 @@ void wk_gpio_config(void)
 
   /* gpio output config */
   gpio_bits_set(GPIOE, soft_i2c_scl_PIN | soft_i2c_sda_PIN);
+  gpio_bits_set(GPIOA, ST7789_CS_PIN | ST7789_RES_PIN);
+  gpio_bits_set(ST7789_DC_GPIO_PORT, ST7789_DC_PIN);
+  gpio_bits_reset(ST7789_BLK_GPIO_PORT, ST7789_BLK_PIN);
   gpio_bits_set(W25Q16_CS_GPIO_PORT, W25Q16_CS_PIN);
   gpio_bits_set(GPIOD, LED0_PIN | LED1_PIN | LED2_PIN);
 
@@ -66,6 +69,20 @@ void wk_gpio_config(void)
   gpio_init_struct.gpio_pins = soft_i2c_scl_PIN | soft_i2c_sda_PIN;
   gpio_init_struct.gpio_pull = GPIO_PULL_NONE;
   gpio_init(GPIOE, &gpio_init_struct);
+
+  gpio_init_struct.gpio_drive_strength = GPIO_DRIVE_STRENGTH_MODERATE;
+  gpio_init_struct.gpio_out_type = GPIO_OUTPUT_PUSH_PULL;
+  gpio_init_struct.gpio_mode = GPIO_MODE_OUTPUT;
+  gpio_init_struct.gpio_pins = ST7789_CS_PIN | ST7789_RES_PIN;
+  gpio_init_struct.gpio_pull = GPIO_PULL_NONE;
+  gpio_init(GPIOA, &gpio_init_struct);
+
+  gpio_init_struct.gpio_drive_strength = GPIO_DRIVE_STRENGTH_MODERATE;
+  gpio_init_struct.gpio_out_type = GPIO_OUTPUT_PUSH_PULL;
+  gpio_init_struct.gpio_mode = GPIO_MODE_OUTPUT;
+  gpio_init_struct.gpio_pins = ST7789_DC_PIN | ST7789_BLK_PIN;
+  gpio_init_struct.gpio_pull = GPIO_PULL_NONE;
+  gpio_init(GPIOC, &gpio_init_struct);
 
   gpio_init_struct.gpio_drive_strength = GPIO_DRIVE_STRENGTH_MODERATE;
   gpio_init_struct.gpio_out_type = GPIO_OUTPUT_PUSH_PULL;
